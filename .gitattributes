@@ -1,0 +1,8 @@
+# Keep source predictable across Windows and other development environments.
+* text=auto eol=lf
+*.bat text eol=crlf
+*.png binary
+*.ico binary
+*.dll binary
+*.zip binary
+*.apk binary

@@ -1,0 +1,23 @@
+name: nettest
+description: "Network diagnostics client for Windows and Android with staged TCP/TLS, proxy tests and named Windows instances."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.13.5
+
+dependencies:
+  ffi: ^2.2.0
+  flutter:
+    sdk: flutter
+  path_provider: ^2.1.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  integration_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
