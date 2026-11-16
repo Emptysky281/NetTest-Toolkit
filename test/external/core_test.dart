@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:nettest/core/platform.dart';
-import 'package:nettest/testing/suite.dart';
+
+import '../support/suite.dart';
 
 void main() {
   test('core features (host)', () async {

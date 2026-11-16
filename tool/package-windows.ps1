@@ -1,7 +1,7 @@
-﻿[CmdletBinding()]
+[CmdletBinding()]
 param(
     [string]$FlutterPath = 'flutter',
-    [string]$ReleaseDate = '2026-11-13',
+    [string]$ReleaseDate = '2026-11-16',
     [switch]$SkipBuild
 )
 $ErrorActionPreference = 'Stop'
@@ -9,7 +9,8 @@ $date = [DateTime]::ParseExact($ReleaseDate, 'yyyy-MM-dd', [Globalization.Cultur
 $root = (Resolve-Path -LiteralPath (Split-Path $PSScriptRoot -Parent)).Path
 $release = Join-Path $root 'build\windows\x64\runner\Release'
 $dist = Join-Path $root 'dist'
-$zipPath = Join-Path $dist ('NetTest-windows-x64-' + $date.ToString('yyyyMMdd') + '.zip')
+$archive = Join-Path $dist ('archive\windows\' + $date.ToString('yyyy-MM-dd'))
+$zipPath = Join-Path $archive ('NetTest-windows-x64-' + $date.ToString('yyyyMMdd') + '.zip')
 if ((Test-Path -LiteralPath $zipPath) -or (Test-Path -LiteralPath "$zipPath.sha256")) {
     throw "Refusing to overwrite an existing release: $zipPath"
 }
@@ -40,7 +41,7 @@ try {
     foreach ($document in $documents.Values) {
         if (-not (Test-Path -LiteralPath $document -PathType Leaf)) { throw "Missing document: $document" }
     }
-    New-Item -ItemType Directory -Path $dist -Force | Out-Null
+    New-Item -ItemType Directory -Path $archive -Force | Out-Null
     Add-Type -AssemblyName System.IO.Compression.FileSystem
     [IO.Compression.ZipFile]::CreateFromDirectory($release, $zipPath,
         [IO.Compression.CompressionLevel]::Optimal, $false)

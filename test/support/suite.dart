@@ -1,15 +1,16 @@
-// Feature checks shared by host tests (test/core_test.dart) and on-device tests (integration_test/).
+// Feature checks shared by host tests (test/external/core_test.dart) and on-device tests (integration_test/).
 import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 
-import '../core/http.dart';
-import '../core/platform.dart';
-import '../core/proxy.dart';
-import '../core/runner.dart';
-import '../core/session.dart';
-import '../core/tls_view.dart';
-import '../core/util.dart';
+import 'package:nettest/core/http.dart';
+import 'package:nettest/core/platform.dart';
+import 'package:nettest/core/proxy.dart';
+import 'package:nettest/core/runner.dart';
+import 'package:nettest/core/session.dart';
+import 'package:nettest/core/tls_view.dart';
+import 'package:nettest/core/util.dart';
+
 import 'mock_servers.dart';
 
 const real = 'http://64.83.22.144:1919/data/';

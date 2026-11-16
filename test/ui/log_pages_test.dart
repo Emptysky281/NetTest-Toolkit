@@ -5,9 +5,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:nettest/main.dart';
-import 'package:nettest/testing/mock_servers.dart';
 import 'package:nettest/ui/app_state.dart';
 import 'package:nettest/ui/widgets.dart';
+
+import '../support/mock_servers.dart';
 
 void main() {
   testWidgets('each page shows only its own connection log, the 日志 page shows all', (tester) async {

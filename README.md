@@ -8,7 +8,7 @@
 
 到本仓库的 [Releases](https://github.com/Emptysky281/NetTest/releases) 下载发布附件。
 
-- **Windows x64**：下载 `NetTest-windows-x64-20261113.zip`，完整解压后运行 `nettest.exe`。不需要安装 Python；**不要只复制 EXE**，同目录 DLL 和 `data` 文件夹也必须保留。
+- **Windows x64**：下载 `NetTest-windows-x64-20261116.zip`，完整解压后运行 `nettest.exe`。不需要安装 Python；**不要只复制 EXE**，同目录 DLL 和 `data` 文件夹也必须保留。
 - **Android**：源码支持构建 APK；当前 Release 只提供 Windows 新版，未将此前的测试签名 APK 混入此次发布。
 - 私有仓库及其附件需要具有仓库访问权限的 GitHub 账号登录后下载。
 
@@ -38,10 +38,9 @@
 ```text
 lib/core/          网络核心、代理、HTTP、TLS、Windows 多开
 lib/ui/            页面、状态与日志组件
-lib/testing/       测试套件和模拟服务器
 android/           Android 工程与 SSLEngine 桥接
 windows/           Windows runner、OpenSSL 运行库与许可证
-test/              核心、界面、滚动和多开回归测试
+test/              按 core/state/ui/external 分类的测试，以及 support/ 和 fixtures/
 integration_test/  设备集成测试
 tool/              检查、构建打包与 Android 辅助脚本
 docs/              使用指南、开发说明和发布说明
@@ -60,19 +59,21 @@ flutter build windows --release
 .\tool\package-windows.ps1 -SkipBuild
 ```
 
-默认检查排除依赖公网服务的 `core_test.dart`；需要完整外网测试时使用：
+默认检查递归发现本地测试，排除 `test/external/` 中依赖公网的测试；需要完整外网测试时使用：
 
 ```powershell
 .\tool\check.ps1 -IncludeExternalNetworkTests
 ```
 
-详细命令、目录和构建要求见 [开发指南](docs/development.md)。
+详细命令、目录和构建要求见 [开发指南](docs/development.md)；测试分类和迁移路径见 [测试说明](test/README.md)。
 
 ## 文档与边界
 
+- [文档索引](docs/README.md)
+- [项目架构与目录职责](docs/architecture.md)
 - [使用指南](docs/usage.md)
 - [开发与发布](docs/development.md)
-- [本版发布说明](docs/releases/2026-11-13.md)
+- [本版发布说明](docs/releases/2026-11-16.md)
 - [变更记录](CHANGELOG.md)
 - [第三方说明](THIRD_PARTY_NOTICES.md)
 

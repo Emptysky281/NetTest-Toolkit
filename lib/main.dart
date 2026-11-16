@@ -69,13 +69,27 @@ class _HomeState extends State<Home> {
         return Scaffold(
           appBar: AppBar(
             title: Tooltip(
-              message: '进程：${st.desktopInstance.label}',
-              child: Text(
-                st.desktopInstance.isolated
-                    ? 'NetTest · ${st.desktopInstance.label} · ${titles[tab]}'
-                    : 'NetTest · ${titles[tab]}',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+              message: '可选中复制 · 进程：${st.desktopInstance.label}',
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: SelectableText(
+                  st.desktopInstance.isolated
+                      ? 'NetTest · ${st.desktopInstance.label} · ${titles[tab]}'
+                      : 'NetTest · ${titles[tab]}',
+                  maxLines: 1,
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    // Cascadia Code is a readable programming font with softer
+                    // curves; the fallbacks keep CJK page names legible.
+                    fontFamily: 'Cascadia Code',
+                    fontFamilyFallback: const [
+                      'Cascadia Mono',
+                      'Consolas',
+                      'Microsoft YaHei UI',
+                    ],
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.15,
+                  ),
+                ),
               ),
             ),
             actions: [

@@ -5,8 +5,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:nettest/main.dart';
-import 'package:nettest/testing/mock_servers.dart';
 import 'package:nettest/ui/app_state.dart';
+
+import '../support/mock_servers.dart';
 
 void main() {
   testWidgets('单连接 and 多连接 run independently, each with its own URL and 停止', (tester) async {
